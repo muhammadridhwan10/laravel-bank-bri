@@ -2,6 +2,16 @@
     "name": "ridhwan/laravel-bank-bri",
     "description": "Laravel Package for Bank Bri Api",
     "type": "library",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ridhwan\\LaravelBankBri\\Providers\\BriServiceProvider"
+            ],
+            "aliases": {
+                "BcaAPI": "Ridhwan\\LaravelBankBri\\Facades\\BriFacade"
+            }
+        }
+    },
     "require": {
         "php": ">=7.2|^8.0",
         "ridhwan/response": "^1.0|dev-master",
