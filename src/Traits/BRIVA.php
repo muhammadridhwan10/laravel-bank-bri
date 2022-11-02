@@ -12,7 +12,7 @@ trait BRIVA
      */
     public function createBriva(array $data)
     {
-        $requestUrl = $this->apiUrl . $this->briva->store;
+        $requestUrl = $this->apiUrlExtra . $this->briva->store;
         $data = array_merge($data, ['institutionCode' => $this->institutionCode]);
 
         return $this->sendRequest('POST', $requestUrl, $data);
@@ -27,7 +27,7 @@ trait BRIVA
      */
     public function getBriva(string $brivaNo, string $customerCode)
     {
-        $requestUrl = "{$this->apiUrl}{$this->briva->show}/{$this->institutionCode}/{$brivaNo}/{$customerCode}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->briva->show}/{$this->institutionCode}/{$brivaNo}/{$customerCode}";
 
         return $this->sendRequest('GET', $requestUrl);
     }
@@ -40,7 +40,7 @@ trait BRIVA
      */
     public function updateBriva(array $data)
     {
-        $requestUrl = "{$this->apiUrl}{$this->briva->update}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->briva->update}";
         $data = array_merge($data, ['institutionCode' => $this->institutionCode]);
 
         return $this->sendRequest('PUT', $requestUrl, $data);
@@ -55,7 +55,7 @@ trait BRIVA
      */
     public function deleteBriva(string $brivaNo, string $custCode)
     {
-        $requestUrl = "{$this->apiUrl}{$this->briva->destroy}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->briva->destroy}";
         $institutionCode = $this->institutionCode;
 
         $data = compact('institutionCode', 'brivaNo', 'custCode');
@@ -73,7 +73,7 @@ trait BRIVA
      */
     public function getStatusBriva(int $brivaNo, string $customerCode)
     {
-        $requestUrl = "{$this->apiUrl}{$this->briva->status}/{$this->institutionCode}/{$brivaNo}/{$customerCode}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->briva->status}/{$this->institutionCode}/{$brivaNo}/{$customerCode}";
 
         return $this->sendRequest('GET', $requestUrl);
     }
@@ -87,7 +87,7 @@ trait BRIVA
      */
     public function updateStatusBriva(array $data)
     {
-        $requestUrl = "{$this->apiUrl}{$this->briva->status}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->briva->status}";
         $data = array_merge($data, ['institutionCode' => $this->institutionCode]);
 
         return $this->sendRequest('PUT', $requestUrl, $data);
@@ -103,7 +103,7 @@ trait BRIVA
      */
     public function getReportBriva(string $brivaNo, string $startDate, string $endDate)
     {
-        $requestUrl = "{$this->apiUrl}{$this->briva->report}/{$this->institutionCode}/{$brivaNo}/{$startDate}/{$endDate}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->briva->report}/{$this->institutionCode}/{$brivaNo}/{$startDate}/{$endDate}";
         return $this->sendRequest('GET', $requestUrl);
     }
 
@@ -126,7 +126,7 @@ trait BRIVA
     ) {
         $requestUrl = sprintf(
             '%s%s/%s/%s/%s/%s/%s/%s',
-            $this->apiUrl,
+            $this->apiUrlExtra,
             $this->briva->report_time,
             $this->institutionCode,
             $brivaNo,

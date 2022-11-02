@@ -15,7 +15,7 @@ trait FundTransferExternal
     {
         $requestUrl = sprintf(
             '%s%s?bankcode=%s&beneficiaryaccount=%s',
-            $this->apiUrl,
+            $this->apiUrlExtra,
             $this->fundTransferExternal->account_validation,
             $bankCode,
             $beneficiaryAccount
@@ -32,7 +32,7 @@ trait FundTransferExternal
      */
     public function FTETransfer(array $data)
     {
-        $requestUrl = $this->apiUrl . $this->fundTransferExternal->transfer;
+        $requestUrl = $this->apiUrlExtra . $this->fundTransferExternal->transfer;
 
         return $this->sendRequest('POST', $requestUrl, $data);
     }
@@ -44,7 +44,7 @@ trait FundTransferExternal
      */
     public function FTEListBankCode()
     {
-        $requestUrl = "{$this->apiUrl}{$this->fundTransferExternal->list_bank_code}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->fundTransferExternal->list_bank_code}";
 
         return $this->sendRequest('GET', $requestUrl);
     }

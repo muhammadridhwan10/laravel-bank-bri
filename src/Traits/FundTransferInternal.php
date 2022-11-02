@@ -23,7 +23,7 @@ trait FundTransferInternal
 
         $requestUrl = sprintf(
             '%s%s?sourceaccount=%s&beneficiaryaccount=%s',
-            $this->apiUrl,
+            $this->apiUrlExtra,
             $this->fundTransferInternal->account_validation,
             $sourceAccount,
             $beneficiaryAccount
@@ -40,7 +40,7 @@ trait FundTransferInternal
      */
     public function FTITransfer(array $data)
     {
-        $requestUrl = $this->apiUrl . $this->fundTransferInternal->transfer;
+        $requestUrl = $this->apiUrlExtra . $this->fundTransferInternal->transfer;
 
         return $this->sendRequest('POST', $requestUrl, $data);
     }
@@ -53,7 +53,7 @@ trait FundTransferInternal
      */
     public function FTICheckStatus(string $noReferral)
     {
-        $requestUrl = "{$this->apiUrl}{$this->fundTransferInternal->check_status}?noReferral={$noReferral}";
+        $requestUrl = "{$this->apiUrlExtra}{$this->fundTransferInternal->check_status}?noReferral={$noReferral}";
 
         return $this->sendRequest('GET', $requestUrl);
     }
